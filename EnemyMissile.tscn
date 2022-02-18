@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://EnemyMissile.gd" type="Script" id=1]
+[ext_resource path="res://mx.mp3" type="AudioStream" id=2]
 [ext_resource path="res://IRBM1.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -29,6 +30,9 @@ scale = Vector2( 1.6, 5.05 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="SoundFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="area_entered" from="." to="." method="_on_EnemyMissle_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

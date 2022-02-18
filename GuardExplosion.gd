@@ -11,6 +11,7 @@ func start(pos0, v0=2.2, a=3):
     
 func _ready():
     $Sprite.show()
+    $SoundExplosion.play()
     $ExplosionFire.emitting = true
     $ExplosionSmoke.emitting = true
     

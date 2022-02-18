@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://EnemyExplosion.gd" type="Script" id=1]
+[ext_resource path="res://m2.mp3" type="AudioStream" id=2]
 
 [node name="EnemyExplosion" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,3 +20,6 @@ initial_velocity_random = 0.5
 scale_amount = 5.0
 scale_amount_random = 0.8
 color = Color( 0.6, 0.568627, 0.556863, 1 )
+
+[node name="SoundExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

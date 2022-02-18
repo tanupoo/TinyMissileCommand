@@ -14,6 +14,7 @@ func start(pos0, pos1, speed, cb):
     position = pos0
     rotation = missile_sprite_dir.angle_to(dir)
     velocity = dir*speed
+    $SoundFire.play()
 
 func _physics_process(delta: float) -> void:
     velocity.y += gravity * delta * delta / 2
