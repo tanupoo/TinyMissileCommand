@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var explosion_scene = preload("res://Explosion.tscn")
+onready var explosion_scene = preload("res://GuardExplosion.tscn")
 
 var velocity = Vector2.ZERO
 var missile_sprite_dir = Vector2(0,-1)
@@ -22,8 +22,8 @@ func _process(delta: float) -> void:
     if position.distance_to(target) < 10:
         velocity = Vector2.ZERO
         var new_scene = explosion_scene.instance()
-        new_scene.start(position, 2.1)
         get_parent().add_child(new_scene)
+        new_scene.start(position, 1.8)
         queue_free()
     else:
         position += velocity * delta

@@ -1,43 +1,42 @@
 extends Node
 
-onready var enemy_missile_scene = preload("res://EnemyMissile.tscn")
-onready var guard_missile_scene = preload("res://GuardMissile.tscn")
-#var nb_enemy_missile = 6
-#var enemy_first_pos = 40
-#var enemy_dist = 40
-var tab = [[6, 60, 60], [6, 60, 180], [6, 600, 60]]
-var idx = 0
+onready var enemy_main_scene = preload("res://EnemyMain.tscn")
+onready var guard_main_scene = preload("res://GuardMain.tscn")
+
+var battery_position = Vector2(640,600)
+var guard_missile_speed = 280
 var enemy_missile_speed = 160
-var battery_position = Vector2(640,660)
-var guard_missile_speed = 240
+var score
 
-func _ready() -> void:
-    $EnemyMissileTimer.set_wait_time(1)
-    $EnemyMissileTimer.start()
+func _ready():
+    $HUD.connect("start_game", self, "new_game")
 
-func _process(delta: float) -> void:
-    var mouse_position = get_viewport().get_mouse_position()
-    if Input.is_action_just_pressed("ui_point"):
-        spwan_guard_missile(mouse_position)
+func new_game():
+    #get_tree().call_group("mobs", "queue_free")
+    score = 100
+    $HUD.update_score(score)
+    $HUD.show_message("Get Ready")
+    start_guard_main()
+    start_enemy_main()
+    #$Music.play()
 
-func spwan_guard_missile(mouse_position):
-    var new_scene = guard_missile_scene.instance()
-    var screen_size = get_viewport().get_visible_rect().size
-    new_scene.start(battery_position, mouse_position, guard_missile_speed)
-    add_child(new_scene)
+func game_over():
+    $HUD.show_message("Game Over", 2)
+    yield(get_tree().create_timer(2), "timeout")
+    $HUD.show_message("Tiny Missile Command")
+    $HUD.show_button()
+
+func update_score(point: int):
+    score += point
+    $HUD.update_score(score)
+
+func start_guard_main():
+    var guard_main = guard_main_scene.instance()
+    add_child(guard_main)
+    guard_main.start(guard_missile_speed, battery_position, self)
+    guard_main.connect("game_over", self, "game_over")
     
-func spawn_enemy_missile(nb_enemy_missile, enemy_first_pos, enemy_dist):
-    for i in range(nb_enemy_missile):
-        var new_scene = enemy_missile_scene.instance()
-        var screen_size = get_viewport().get_visible_rect().size
-        new_scene.start(Vector2(enemy_first_pos + enemy_dist*i, 0), battery_position, enemy_missile_speed)
-        add_child(new_scene)
-
-
-func _on_EnemyMissileTimer_timeout() -> void:
-    spawn_enemy_missile(tab[idx][0], tab[idx][1], tab[idx][2])
-    idx += 1
-    if tab.size() == idx:
-        idx = 0
-    $EnemyMissileTimer.set_wait_time(6)
-    $EnemyMissileTimer.start()
+func start_enemy_main():
+    var new_scene = enemy_main_scene.instance()
+    add_child(new_scene)
+    new_scene.start(enemy_missile_speed, self)

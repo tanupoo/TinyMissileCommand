@@ -17,6 +17,7 @@ height = 64.0
 
 [node name="EnemyMissle" type="Area2D"]
 scale = Vector2( 0.25, 0.25 )
+collision_mask = 14
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
