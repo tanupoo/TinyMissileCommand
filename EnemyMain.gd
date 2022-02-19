@@ -3,6 +3,11 @@ extends Node
 onready var enemy_missile_scene = preload("res://EnemyMissile.tscn")
 var enemy_table = [
     [
+    {"nb": 2, "x0":  60, "dist":  60, "tgt": 192},
+    {"nb": 2, "x0": 360, "dist":  60, "tgt": 640},
+    {"nb": 2, "x0": 660, "dist":  60, "tgt": 1088},
+    ],
+    [
     {"nb": 3, "x0":  60, "dist":  60, "tgt": 192},
     {"nb": 3, "x0": 360, "dist":  60, "tgt": 640},
     {"nb": 3, "x0": 660, "dist":  60, "tgt": 1088},
