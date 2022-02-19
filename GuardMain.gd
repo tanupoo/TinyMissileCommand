@@ -18,7 +18,7 @@ func _input(event):
             spwan_guard_missile(event.position)
 
 func _process(delta):
-    if main.score < 0:
+    if main.durability < 0:
         emit_signal("game_over")
     var mouse_position = get_viewport().get_mouse_position()
     if Input.is_action_just_pressed("ui_point"):

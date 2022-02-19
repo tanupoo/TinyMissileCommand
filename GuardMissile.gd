@@ -30,9 +30,7 @@ func _process(delta: float) -> void:
         position += velocity * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
-    print("screen exited G")
     queue_free()
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport: Viewport) -> void:
-    print("viewport exited G")
     queue_free()

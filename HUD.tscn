@@ -35,24 +35,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLabel" type="Label" parent="."]
-margin_left = 1064.0
+[node name="Elapsed" type="Label" parent="."]
+margin_left = 16.0
 margin_top = 8.0
-margin_right = 1139.0
+margin_right = 104.0
 margin_bottom = 50.0
 custom_fonts/font = SubResource( 2 )
-text = "Score"
+text = "Elapsed :"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="ScoreLabel"]
-margin_left = 88.0
-margin_right = 200.0
+[node name="Score" type="Label" parent="Elapsed"]
+margin_left = 120.0
+margin_right = 232.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 2 )
-text = "000000"
+text = "0000.00"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Durability" type="Label" parent="."]
+margin_left = 1032.0
+margin_top = 8.0
+margin_right = 1162.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+text = "Durability :"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Durability"]
+margin_left = 136.0
+margin_right = 232.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 2 )
+text = "00000"
 align = 2
 valign = 1
 __meta__ = {

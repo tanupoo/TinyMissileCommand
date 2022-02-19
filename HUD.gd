@@ -8,10 +8,13 @@ func _ready() -> void:
     $StartButton.connect("pressed", self, "start_game")
     $ResetButton.connect("pressed", self, "reset_game")
     $ResetButton.hide()
-    
-func update_score(score):
-    $ScoreLabel/Score.text = "%06d" % score
 
+func update_durability(durability: int):
+    $Durability/Score.text = "%05d" % durability
+
+func update_elapsed(value: float):
+    $Elapsed/Score.text = "%6.2f" % [value]
+    
 func show_message(text):
     $Message.text = text
     $Message.show()

@@ -14,7 +14,7 @@ func start(pos0, pos1, speed, cb):
     position = pos0
     rotation = missile_sprite_dir.angle_to(dir)
     velocity = dir*speed
-    $SoundFire.play()
+    #$SoundFire.play()
 
 func _physics_process(delta: float) -> void:
     velocity.y += gravity * delta * delta / 2
@@ -29,11 +29,11 @@ func _on_EnemyMissle_area_entered(area: Area2D) -> void:
     velocity = Vector2.ZERO
     var new_scene
     if area.name in ["BaseStationL", "BaseStationR", "Battery"]:
-        main.update_score(-250)
+        main.update_durability(-250)
         new_scene = base_explosion_scene.instance()
     #elif area.name == "GuardExplosion":
     elif area.is_in_group("guard_explosion"):
-        main.update_score(100)
+        main.update_durability(100)
         new_scene = enemy_explosion_scene.instance()
     else:
         assert(1 == 0, "area.name: %s"%area.name)

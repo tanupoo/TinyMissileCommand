@@ -40,8 +40,7 @@ func _ready():
     enemy_timer.set_wait_time(4)
     enemy_timer.connect("timeout", self, "spawning")
     enemy_timer.start()
-    
-    
+
 func spawn_enemy_missile(tab):
     for v in tab:
         for i in range(v["nb"]):
@@ -49,7 +48,6 @@ func spawn_enemy_missile(tab):
             new_scene.start(Vector2(v["x0"] + v["dist"]*i, 0), Vector2(v["tgt"], 600), enemy_missile_speed, main)
             add_child(new_scene)
             yield(get_tree().create_timer(0.5), "timeout")
-
 
 func spawning():
     enemy_idx += 1
