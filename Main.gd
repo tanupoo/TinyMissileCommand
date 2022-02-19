@@ -7,7 +7,7 @@ var guard_main
 var enemy_main
 var battery_position = Vector2(640,600)
 var guard_missile_speed = 280
-var enemy_missile_speed = 160
+var enemy_missile_speed = 120
 var score
 
 func _ready():
