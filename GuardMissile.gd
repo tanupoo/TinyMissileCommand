@@ -14,7 +14,6 @@ func start(pos0, pos1, speed):
     velocity = dir*speed
     target = pos1
     $SoundFire.play()
-    $AnimatedSprite.play("fire")
 
 func _physics_process(delta: float) -> void:
     velocity.y += gravity * delta * delta / 2

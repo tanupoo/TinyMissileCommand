@@ -5,7 +5,7 @@ onready var guard_main_scene = preload("res://GuardMain.tscn")
 
 var guard_main
 var enemy_main
-var guard_missile_speed = 280
+var guard_missile_speed = 340
 var enemy_missile_speed = 120
 var initial_durability = 100
 var elapsed
