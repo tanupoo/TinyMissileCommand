@@ -5,7 +5,6 @@ onready var guard_main_scene = preload("res://GuardMain.tscn")
 
 var guard_main
 var enemy_main
-var battery_position = Vector2(640,600)
 var guard_missile_speed = 280
 var enemy_missile_speed = 120
 var initial_durability = 100
@@ -54,7 +53,7 @@ func update_durability(point: int):
 func start_guard_main():
     guard_main = guard_main_scene.instance()
     add_child(guard_main)
-    guard_main.start(guard_missile_speed, battery_position, self)
+    guard_main.start(guard_missile_speed, self)
     guard_main.connect("game_over", self, "game_over")
 
 func start_enemy_main():

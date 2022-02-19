@@ -3,13 +3,12 @@ extends Node
 signal game_over
 onready var guard_missile_scene = preload("res://GuardMissile.tscn")
 
-var battery_position
+var battery_position = Vector2(640,600)
 var guard_missile_speed
 var main
 
-func start(speed: float, bat_pos: Vector2, cb):
+func start(speed: float, cb):
     guard_missile_speed = speed
-    battery_position = bat_pos
     main = cb
 
 func _input(event):
