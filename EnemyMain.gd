@@ -45,7 +45,8 @@ func spawn_enemy_missile(tab):
     for v in tab:
         for i in range(v["nb"]):
             var new_scene = enemy_missile_scene.instance()
-            new_scene.start(Vector2(v["x0"] + v["dist"]*i, 0), Vector2(v["tgt"], 600), enemy_missile_speed, main)
+            var tgt = v["tgt"] + rand_range(-30, 30)
+            new_scene.start(Vector2(v["x0"] + v["dist"]*i, 0), Vector2(tgt, 600), enemy_missile_speed, main)
             add_child(new_scene)
             yield(get_tree().create_timer(0.5), "timeout")
 
