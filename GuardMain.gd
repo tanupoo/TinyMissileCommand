@@ -12,6 +12,11 @@ func start(speed: float, bat_pos: Vector2, cb):
     battery_position = bat_pos
     main = cb
 
+func _input(event):
+    if event is InputEventScreenTouch:
+        if event.pressed:
+            spwan_guard_missile(event.position)
+
 func _process(delta):
     if main.score < 0:
         emit_signal("game_over")
